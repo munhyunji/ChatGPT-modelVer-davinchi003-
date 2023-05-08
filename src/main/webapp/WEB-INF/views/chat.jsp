@@ -11,8 +11,8 @@
 	height: 500px;
 	overflow-y: scroll;
 	border-radius: .6em;
-	background: #eee;
-	box-shadow: 1px 1px gray;
+	background: #20212A;
+	box-shadow: 0 0 5px gray;
 }
 
 .content::-webkit-scrollbar {
@@ -27,19 +27,23 @@
 /*말풍선*/
 .mychatbox, .botchatbox {
 	padding: 5px;
-	max-width: 260px;
+	max-width: 300px;
 	margin-right: 10px;
+	font-family: 'Noto Serif KR', serif;
+	color: white;
 }
 
 .mySendTime {
 	margin-right: 7px;
 	font-size: 12px;
+	color: white;
 	margin-top: 10px;
 }
 
 .botSendTime {
 	font-size: 12px;
 	margin-top: 10px;
+	color: white;
 }
 
 .me {
@@ -48,12 +52,12 @@
 
 .mychatbox {
 	position: relative;
-	background: #FFEB33;
+	/*background: #FFEB33;*/
 	border-radius: .4em;
-	box-shadow: 1px 1px 2px gray;
+	/*box-shadow: 1px 1px 2px gray;*/
 }
 
-.mychatbox:after {
+/*.mychatbox:after {
 	content: '';
 	position: absolute;
 	right: 0;
@@ -66,17 +70,17 @@
 	border-top: 0;
 	margin-top: -13px;
 	margin-right: -8px;
-}
+}*/
 
 .botchatbox {
 	position: relative;
-	background: white;
+	/*background: white;*/
 	border-radius: .4em;
 	margin-left: 10px;
-	box-shadow: 1px 1px 2px gray;
+	/*display: none;*/
 }
 
-.botchatbox:after {
+/*.botchatbox:after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -89,7 +93,26 @@
 	border-top: 0;
 	margin-top: -13px;
 	margin-left: -9px;
+}*/
+
+.robotface {
+	margin: 0 5px;
 }
+
+.typing {  
+/*position: absolute;*/ 
+  display: inline-block; 
+  animation-name: cursor; 
+  animation-duration: 1.0s; 
+  animation-iteration-count: infinite;
+  height: 20px;
+ } 
+ @keyframes cursor{ 
+  0%{border-right: 1px solid #fff} 
+  50%{border-right: 1px solid #000} 
+  100%{border-right: 1px solid #fff} 
+}
+
 
 /*전송*/
 .command {
@@ -112,8 +135,9 @@
 	margin-left: auto;
 }
 
+
 .gradi {
-	  background: linear-gradient(to right top, #861657, #ffa69e);
+	  background: linear-gradient(to right, #00CED1, #3CB371);
 	  color: transparent;
     -webkit-background-clip: text;
 }
@@ -131,16 +155,18 @@
 			<div class="col-md-12">
 				<div class="content col-md-12">
 					<div class="line">
-						<div class="mySendTime me">12:00</div>
-						<span class="mychatbox ">안녕 로봇아?</span>
+						<!-- <div class="mySendTime me">12:00</div> -->
+						<span class="mychatbox me">안녕 로봇아?</span>
 					</div>
 					<div class="line">
+						<span class="robotface">🤖</span>
 						<span class="botchatbox">반갑습니다. </span>
-						<div class="botSendTime">12:00</div>
+						<!-- <p class="typing"></p>-->
+						<!--<div class="botSendTime">12:00</div>-->
 					</div>
 				</div>
 				<div class="command">
-					<input class="chatcommand" id="input">
+					<input class="chatcommand" id="input" placeholder="Say Something..">
 					<!-- <button class="send" id="send">전송</button>	-->
 				</div>
 				<!-- <h4 class="my-3">E-Commerce</h4>-->
@@ -171,7 +197,7 @@
 			var time = date.getHours();
 			var min = date.getMinutes();
 			
-			var bubble = `<div class="line"><div class="mySendTime me">`+amPm+time+`:`+min+`</div><span class="mychatbox">`+text.value+`</span></div>`;
+			var bubble = `<div class="line"><span class="mychatbox me">`+text.value+`</span></div>`;
 			if( text.value != "" ) {
 				document.querySelector('.content').insertAdjacentHTML('beforeend', bubble);
 				content.scrollTop = content.scrollHeight;
@@ -184,12 +210,13 @@
 				method : 'POST',
 				headers: {
 				  'Content-Type': 'application/json',
-          		  'Authorization': 'Bearer ' + String('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')
+					//API key 입력 
+          		  'Authorization': 'Bearer ' + String('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')
 				},
 				body: JSON.stringify({
 					'prompt': text.value,
-         			'temperature': 0.1,
-         			'max_tokens': 500,
+         			'temperature': 0.8,
+         			'max_tokens': 256,
          			'top_p': 1,
          			'frequency_penalty': 0,
         			'presence_penalty': 0.5,
@@ -200,12 +227,12 @@
 			  fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', requestOptions)
           		.then(response => response.json())
           		.then(data => {
-            		//console.log(data.choices[0].text);
-					var botBubble = `<div class="line"><span class="botchatbox">`+data.choices[0].text+`</span><div class="botSendTime">`+amPm+time+`:`+min+`</div></div>`;
-			  		content.insertAdjacentHTML('beforeend', botBubble);
+            		console.log(data.choices[0].text);
+					document.querySelector('.content').insertAdjacentHTML('beforeend', `<div class="line"><span class="botchatbox">`+data.choices[0].text+`</span></div>`);
+
 					content.scrollTop = content.scrollHeight;
         	  }).catch(err => {
-          			console.log("Ran out of tokens for today! Try tomorrow!");
+          			//console.log("Ran out of tokens for today! Try tomorrow!");
         	  });
 			  	
 
