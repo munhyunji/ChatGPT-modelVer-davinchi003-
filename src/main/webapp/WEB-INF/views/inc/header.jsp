@@ -12,6 +12,11 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Zomepage</title>
+        
+        <script type="text/Javascript" src="${path}/resources/js/jquery-1.8.2.js"></script>
+		<script type="text/Javascript" src="${path}/resources/js/jquery-ui.js"></script>
+		<script type="text/Javascript" src="${path}/resources/js/jquery-ui.touch.js"></script>
+	
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="${path }/resources/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -19,13 +24,15 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet" type="text/css" />
+        
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="resources/css/styles.css" rel="stylesheet" />
-        <script type="text/Javascript" src="${path}/resources/js/scripts.js"></script>
+        <!-- <script type="text/Javascript" src="${path}/resources/js/scripts.js"></script>-->
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#page-top"><img src="${path }/resources/assets/img/navbar-logo.svg" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +45,8 @@
                         <li class="nav-item"><a class="nav-link" href="${path}#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="${path}/chat">Chat AI</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${path}#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${path}/SalesAlaram">Contact</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
         </nav>

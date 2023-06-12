@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="./inc/header.jsp"%>
+ <%@ include file="./inc/header.jsp"%>
 
 
 <style>
@@ -147,7 +147,7 @@
 <section class="page-section" id="services">
 	<div class="container">
 		<div class="text-center">
-			<h2 class="section-heading text-uppercase">🤖<br>ChatGPT <span class="gradi">Demo</span></h2>
+			<h2 class="section-heading text-uppercase">🤖<br>ChatGPT <span class="gradi">BOT</span></h2>
 			<h3 class="section-subheading text-muted">Base on OpenAI
 				(Model : text-davinci-003)</h3>
 		</div>
@@ -170,9 +170,7 @@
 					<!-- <button class="send" id="send">전송</button>	-->
 				</div>
 				<!-- <h4 class="my-3">E-Commerce</h4>-->
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-					adipisicing elit. Minima maxime quam architecto quo inventore harum
-					ex magni, dicta impedit.</p>
+				<p class="text-muted">작성 : AI와 대화하고 싶은 문현지</p>
 			</div>
 		</div>
 	</div>
@@ -211,7 +209,7 @@
 				headers: {
 				  'Content-Type': 'application/json',
 					//API key 입력 
-          		  'Authorization': 'Bearer ' + String('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')
+          		  'Authorization': 'Bearer ' + String('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')
 				},
 				body: JSON.stringify({
 					'prompt': text.value,
